@@ -1,6 +1,6 @@
 mod mainview;
-pub mod layouts;
-pub mod ui;
+mod layouts;
+mod ui;
 
 pub use mainview::*;
 pub use layouts::*;

@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 mod components;
+mod serialization;
 
 use crate::components::*;
 
