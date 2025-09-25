@@ -1,7 +1,10 @@
-mod mainview;
-mod layouts;
+mod menu;
+mod editor;
 mod ui;
 
-pub use mainview::*;
-pub use layouts::*;
+// Views
+pub use menu::*;
+pub use editor::*;
+
+// UI
 pub use ui::*;

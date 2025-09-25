@@ -2,14 +2,40 @@ use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
 use std::{fs, path::Path};
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Config {
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+pub struct EditorData {
     pub name: String,
+
     #[serde(default)]
     pub version: Option<String>,
+
+    #[serde(default)]
+    pub metadata: Option<serde_json::Value>,
+
+    #[serde(default)]
+    pub ressources: Vec<serde_json::Value>,
+
+    #[serde(default)]
+    pub events: Vec<serde_json::Value>,
+
+    #[serde(default)]
+    pub locations: Vec<serde_json::Value>, 
 }
 
-pub fn load_config<P: AsRef<Path>>(path: P) -> Result<Config> {
+impl Default for EditorData {
+    fn default() -> Self {
+        EditorData {
+            name: "New Project".to_string(),
+            version: Some("0.1.0".to_string()),
+            metadata: None,
+            ressources: vec![],
+            events: vec![],
+            locations: vec![],
+        }
+    }
+}
+
+pub fn load_editor<P: AsRef<Path>>(path: P) -> Result<EditorData> {
     let path = path.as_ref();
     let text =
         fs::read_to_string(path).with_context(|| format!("Failed to read {}", path.display()))?;

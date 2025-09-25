@@ -1,7 +1,7 @@
 use dioxus::desktop::{Config, WindowBuilder};
 use dioxus::prelude::*;
 mod components;
-mod serialization;
+mod data;
 
 use crate::components::*;
 
@@ -11,9 +11,10 @@ const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 
 #[derive(Routable, Clone, PartialEq)]
 pub enum Route {
-    #[layout(Navbar)]
     #[route("/")]
-    MainView,
+    Menu,
+    #[route("/editor")]
+    Editor
 }
 
 fn main() {
