@@ -21,7 +21,7 @@ pub fn load_config<P: AsRef<Path>>(path: P) -> Result<Config> {
 
     let cfg = match ext.as_str() {
         "yaml" | "yml" => serde_yaml::from_str(&text)
-            .with_context(|| "YAML parse error")?,
+            .with_context(|| "YAML parse error, check for required attribute here: <link_to_this_yaml_file_spec")?,
         "json" => serde_json::from_str(&text)
             .with_context(|| "JSON parse error, check for required attribute here: <link_to_this_json_file_spec")?,
         other => anyhow::bail!("Unsupported extension: {other}"),
