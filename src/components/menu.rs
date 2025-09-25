@@ -10,7 +10,6 @@ pub static CURRENT_EDITOR_CONTEXT: Global<Signal<EditorData>, EditorData> = Sign
 
 #[component]
 pub fn Menu() -> Element {
-
     rsx! {
         div { class: "flex flex-col justify-center h-screen max-w-xs md:max-w-xl xl:max-w-2xl mx-auto",
             div {
