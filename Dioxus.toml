@@ -1,5 +1,9 @@
 [application]
 
+name = "Editor"
+default_platform = "desktop"
+asset_dir = "assets"
+
 [web.app]
 
 # HTML title tag content
@@ -8,8 +12,16 @@ title = "Editor"
 # include `assets` in web platform
 [web.resource]
 
+[bundle]
+identifier = "com.gabaudette.editor"
+publisher = "gabaudette software"
+resource = ["assets/*"]
+
 # Additional CSS style files
-style = []
+style = [
+    "assets/main.css",
+    "assets/tailwind.css"
+]
 
 # Additional JavaScript files
 script = []

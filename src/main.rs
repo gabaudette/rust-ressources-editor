@@ -1,3 +1,4 @@
+use dioxus::desktop::{Config, WindowBuilder};
 use dioxus::prelude::*;
 mod components;
 mod serialization;
@@ -11,13 +12,20 @@ const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 #[derive(Routable, Clone, PartialEq)]
 pub enum Route {
     #[layout(Navbar)]
-
     #[route("/")]
     MainView,
 }
 
 fn main() {
-    dioxus::launch(App);
+    dioxus::LaunchBuilder::desktop()
+        .with_cfg(
+            Config::new().with_window(
+                WindowBuilder::new()
+                    .with_title("Rust Ressources Editor")
+                    .with_resizable(true),
+            ),
+        )
+        .launch(App)
 }
 
 #[component]
